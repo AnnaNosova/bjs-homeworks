@@ -67,8 +67,8 @@ function getAverageScore(data) {
         marksSum += subjAverageMark;
         counter++;
     }
-    let averageScore = marksSum / counter;
-    return console.log(averageScore);
+    data.average = marksSum / counter;
+    return console.log(data);
 }
 
 function getAverageMarks(subject) {
@@ -104,16 +104,22 @@ console.log('');
 console.log('');
 
 function getPersonData(secretData) {
-    let a = 'Родриго';
-    let b = 'Эмильо';
-    if (secretData.aaa === 0 && secretData.bbb === 0) {
-        return {firstName: a, lastName: a}
-    } else if (secretData.aaa === 1 && secretData.bbb === 0) {
-        return {firstName: b, lastName: a}
-    } else if (secretData.aaa === 0 && secretData.bbb === 1) {
-        return {firstName: a, lastName: b}
-    } else if (secretData.aaa === 1 && secretData.bbb === 1) {
-        return {firstName: b, lastName: b}
+    secretData.firstName = secretData.aaa;
+    delete secretData.aaa;
+    secretData.lastName = secretData.bbb;
+    delete secretData.bbb;
+
+    for (let i in secretData) {
+        secretData[i] = descryptPersonData(secretData[i]);
+    }
+  return secretData;
+}
+
+function descryptPersonData(data) {
+    if (data === 0) {
+        return 'Родриго';
+    } else {
+        return 'Эмильо';
     }
 }
 
@@ -122,7 +128,3 @@ console.log(getPersonData({aaa: 0, bbb: 0}));
 console.log(getPersonData({aaa: 0, bbb: 1}));
 console.log(getPersonData({aaa: 1, bbb: 1}));
 console.log(getPersonData({aaa: 1, bbb: 0}));
-
-
-
-
