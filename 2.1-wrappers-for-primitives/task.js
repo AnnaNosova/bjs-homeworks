@@ -50,8 +50,8 @@ function sayHello() {
 
 function getGreeting(name) {
     if(name === '') {
-        return alert('Привет, мир! Меня зовут Аноним');
+        return 'Привет, мир! Меня зовут Аноним';
     } else {
-        alert(`Привет, мир! Меня зовут ${name}`);
+        return `Привет, мир! Меня зовут ${name}`;
     }
 }
