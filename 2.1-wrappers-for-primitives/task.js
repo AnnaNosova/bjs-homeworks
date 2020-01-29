@@ -27,8 +27,8 @@ function calculateTotalMortgage(percent, contribution, amount, monthsAmount) {
     for (let key in Object(mortgageData)) {
         console.log(mortgageData[key])
         if (isNaN(mortgageData[key]) || mortgageData[key] === undefined) {
-            return console.log(`Параметр ${key} содержит неправильное значение ${mortgageData[key]}`);
-            break;
+            console.log(`Параметр ${key} содержит неправильное значение ${mortgageData[key]}`);
+            return `Параметр ${key} содержит неправильное значение ${mortgageData[key]}`;
         } 
     }
 
@@ -50,8 +50,7 @@ function sayHello() {
 
 function getGreeting(name) {
     if(name === '') {
-        return 'Привет, мир! Меня зовут Аноним';
-    } else {
-        return `Привет, мир! Меня зовут ${name}`;
+        name = 'Аноним';
     }
+    return `Привет, мир! Меня зовут ${name}`;
 }
